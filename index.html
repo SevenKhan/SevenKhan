@@ -54,3 +54,17 @@
     <img src="https://komarev.com/ghpvc/?username=SevenKhan&color=brightgreen" alt="Visitor Count">
   </p>
 </section>
+
+<!-- 🎵 Sayfa açılır açılmaz müzik -->
+<audio id="intro-music" src="intro.mp3" preload="auto"></audio>
+<script>
+  const music = document.getElementById('intro-music');
+
+  window.addEventListener('load', () => {
+    music.play().catch(() => console.log("Otomatik çalma engellendi"));
+    setTimeout(() => {
+      music.pause();
+      music.currentTime = 0;
+    }, 20000);
+  });
+</script>
