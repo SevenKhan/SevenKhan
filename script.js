@@ -42,3 +42,17 @@ document.addEventListener('DOMContentLoaded', () => {
   updateClock();
   setInterval(updateClock, 1000);
 });
+
+// Baloncuk animasyonu
+button.addEventListener('click', (e) => {
+  for(let i=0; i<5; i++){
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.style.left = `${e.clientX + (Math.random()*40-20)}px`;
+    bubble.style.top = `${e.clientY + (Math.random()*40-20)}px`;
+    document.body.appendChild(bubble);
+    setTimeout(() => {
+      bubble.remove();
+    }, 1000);
+  }
+});
