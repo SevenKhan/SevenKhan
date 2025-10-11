@@ -1,4 +1,4 @@
-/* Daha şık tasarım */
+/* Daha şık tasarım ve animasyonlar */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display:flex;
@@ -7,26 +7,43 @@ body {
   height:100vh;
   margin:0;
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  animation: backgroundShift 15s ease infinite;
 }
+
+@keyframes backgroundShift {
+  0% { background: linear-gradient(135deg, #f5f7fa, #c3cfe2); }
+  50% { background: linear-gradient(135deg, #c3cfe2, #667eea); }
+  100% { background: linear-gradient(135deg, #f5f7fa, #c3cfe2); }
+}
+
 main {
   text-align:center;
   background:rgba(255,255,255,0.95);
   padding:3rem 4rem;
   border-radius:20px;
   box-shadow:0 12px 40px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 main:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.25);
 }
+
 h1 {
   font-size:2.5rem;
   color:#333;
+  transition: color 0.3s;
 }
+h1:hover {
+  color:#667eea;
+}
+
 p {
   font-size:1.2rem;
   color:#555;
+  transition: color 0.3s;
 }
+
 button {
   padding:0.8rem 1.5rem;
   margin-top:1.5rem;
@@ -37,9 +54,20 @@ button {
   background: linear-gradient(135deg, #667eea, #764ba2);
   color:white;
   font-size:1rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+#counter {
+  display:inline-block;
+  transition: transform 0.2s, color 0.3s;
+}
+
+#message {
+  font-weight:bold;
+  transition: color 0.3s;
 }
