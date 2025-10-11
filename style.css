@@ -168,3 +168,26 @@ body {
   50% { color: #ffffff; transform: scale(1.4); }
   100% { color: #ffcc00; transform: scale(1); }
 }
+
+/* 💹 Piyasa bölümü */
+#market-section {
+  margin-top: 50px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+#market-section h2 {
+  font-size: 2em;
+  color: #ffcc00;
+  text-shadow: 0 0 10px #ffcc00;
+}
+
+#market-data p {
+  font-size: 1.3em;
+  margin: 10px 0;
+}
