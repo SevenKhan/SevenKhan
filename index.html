@@ -47,6 +47,46 @@
   <a href="https://twitter.com/intent/tweet?text=SevenKhan%20Canlı%20Piyasa%20Sayfası:%20https://sevenkhan.github.io/SevenKhan/" target="_blank">🐦 Twitter</a> |
   <a href="https://www.facebook.com/sharer/sharer.php?u=https://sevenkhan.github.io/SevenKhan/" target="_blank">📘 Facebook</a>
 </section>
+cat >> index.html <<'EOF'
+
+<!-- 🎵 Otomatik çalma engellenirse kullanıcı başlatabilir -->
+<button id="play-music-btn" style="
+    display:none;
+    padding:10px 20px;
+    margin:20px auto;
+    display:block;
+    background:#ff66aa;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:1.2em;
+    cursor:pointer;
+">▶ Müzik Başlat</button>
+
+<script>
+const music = document.getElementById('intro-music');
+const playBtn = document.getElementById('play-music-btn');
+
+window.addEventListener('load', () => {
+  music.play().catch(() => {
+    // Otomatik çalma engellendi, butonu göster
+    playBtn.style.display = 'block';
+  });
+
+  // 20 saniye sonra durdur
+  setTimeout(() => {
+    music.pause();
+    music.currentTime = 0;
+  }, 20000);
+});
+
+// Butona tıklanırsa çal
+playBtn.addEventListener('click', () => {
+  music.play();
+  playBtn.style.display = 'none';
+});
+</script>
+EOF
 
 <!-- 🌟 Ziyaretçi Sayacı -->
 <section id="visitor-section">
