@@ -670,3 +670,59 @@ mesajlariGoster();
     })
     .catch(err => console.log("Ülke tespiti başarısız:", err));
 </script>
+<script>
+let oncekiFiyat = { btc: 0, eth: 0, bnb: 0 };
+
+async function fiyatlariYukle() {
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd');
+    const data = await res.json();
+
+    const fiyatlar = {
+      btc: data.bitcoin.usd,
+      eth: data.ethereum.usd,
+      bnb: data.binancecoin.usd
+    };
+
+    // BTC
+    const btcElem = document.getElementById("btc");
+    btcElem.textContent = fiyatlar.btc.toLocaleString() + " $";
+    if (fiyatlar.btc > oncekiFiyat.btc) anim(btcElem, "green");
+    else if (fiyatlar.btc < oncekiFiyat.btc) anim(btcElem, "red");
+
+    // ETH
+    const ethElem = document.getElementById("eth");
+    ethElem.textContent = fiyatlar.eth.toLocaleString() + " $";
+    if (fiyatlar.eth > oncekiFiyat.eth) anim(ethElem, "green");
+    else if (fiyatlar.eth < oncekiFiyat.eth) anim(ethElem, "red");
+
+    // BNB
+    const bnbElem = document.getElementById("bnb");
+    bnbElem.textContent = fiyatlar.bnb.toLocaleString() + " $";
+    if (fiyatlar.bnb > oncekiFiyat.bnb) anim(bnbElem, "green");
+    else if (fiyatlar.bnb < oncekiFiyat.bnb) anim(bnbElem, "red");
+
+    // Eski fiyatları güncelle
+    oncekiFiyat = {...fiyatlar};
+
+  } catch (err) {
+    document.getElementById("kriptoFiyatlar").innerHTML = "Veri alınamadı 😔";
+    console.error(err);
+  }
+}
+
+// Yanıp sönen animasyon
+function anim(elem, renk) {
+  elem.style.transition = "color 0.3s, text-shadow 0.3s";
+  elem.style.color = renk;
+  elem.style.textShadow = `0 0 8px ${renk}, 0 0 15px ${renk}`;
+  setTimeout(() => {
+    elem.style.color = "#00fff0";
+    elem.style.textShadow = "0 0 8px #00fff0, 0 0 15px #00fff0";
+  }, 800);
+}
+
+// Sayfa yüklenince ve her 1 dakikada bir güncelle
+fiyatlariYukle();
+setInterval(fiyatlariYukle, 60000);
+</script>
