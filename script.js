@@ -78,3 +78,8 @@ document.getElementById('ethereum-address').addEventListener('click', () => {
   navigator.clipboard.writeText('0xb3669c541415a20E4Aa56ef13E76d02Fd9faa64E');
   alert('Ethereum adresi kopyalandı!');
 });
+
+// 📲 QR Kodları
+document.getElementById('solana-qr').src = `https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=5s1ZvjxCrrwd6JoF3wPEaSRpnNYMwSUqhYTF6YjMFKkz`;
+
+document.getElementById('ethereum-qr').src = `https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=0xb3669c541415a20E4Aa56ef13E76d02Fd9faa64E`;

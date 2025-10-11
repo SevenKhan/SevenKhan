@@ -92,3 +92,37 @@ body {
   font-size: 1.2em;
   word-break: break-all;
 }
+
+#qr-section {
+  margin-top: 30px;
+  text-align: center;
+  width: 90%;
+  max-width: 700px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+#qr-section h2 {
+  font-size: 1.8em;
+  color: #ff66aa;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff66aa;
+}
+
+.qr-box {
+  display: inline-block;
+  margin: 15px;
+  background: rgba(255,255,255,0.2);
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.qr-box img {
+  width: 150px;
+  height: 150px;
+  margin-top: 10px;
+}
