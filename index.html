@@ -584,3 +584,62 @@ async function fiyatlariYukle() {
 fiyatlariYukle();
 setInterval(fiyatlariYukle, 60000);
 </script>
+<h2 style="text-align:center; color:#00fff0;">Ziyaretçi Mesajları</h2>
+<div id="mesajAlani" style="
+  max-width: 600px;
+  margin: 20px auto;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.3);
+  color: white;
+">
+  <input id="isim" placeholder="İsminiz" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: none;">
+  <textarea id="mesaj" placeholder="Mesajınızı yazın..." style="width: 100%; height: 80px; padding: 10px; border-radius: 8px; border: none;"></textarea>
+  <button onclick="mesajGonder()" style="
+    width: 100%;
+    padding: 10px;
+    background: #00fff0;
+    border: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+  ">Gönder</button>
+
+  <ul id="mesajlar" style="list-style:none; padding:0; margin-top:15px;"></ul>
+</div>
+
+<script>
+function mesajGonder() {
+  const isim = document.getElementById("isim").value.trim();
+  const mesaj = document.getElementById("mesaj").value.trim();
+  if (!isim || !mesaj) {
+    alert("Lütfen isim ve mesaj girin!");
+    return;
+  }
+  const zaman = new Date().toLocaleString();
+  const yeniMesaj = { isim, mesaj, zaman };
+
+  // Yerel depolama
+  const mevcut = JSON.parse(localStorage.getItem("mesajlar") || "[]");
+  mevcut.unshift(yeniMesaj);
+  localStorage.setItem("mesajlar", JSON.stringify(mevcut));
+
+  document.getElementById("isim").value = "";
+  document.getElementById("mesaj").value = "";
+  mesajlariGoster();
+}
+
+function mesajlariGoster() {
+  const mesajlar = JSON.parse(localStorage.getItem("mesajlar") || "[]");
+  const liste = document.getElementById("mesajlar");
+  liste.innerHTML = "";
+  mesajlar.forEach(m => {
+    const li = document.createElement("li");
+    li.innerHTML = `<b style="color:#00fff0;">${m.isim}</b>: ${m.mesaj} <br><small style="opacity:0.6;">${m.zaman}</small><hr style="border-color:#00fff0;">`;
+    liste.appendChild(li);
+  });
+}
+mesajlariGoster();
+</script>
