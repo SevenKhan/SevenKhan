@@ -210,3 +210,36 @@ startBtn.addEventListener('click', () => {
     musicPlaying = true;
   }
 });
+
+// ⚙️ Level sistemi değişkenleri
+let level = 1;
+const levelDisplay = document.getElementById('levelDisplay');
+
+// 🎯 Level kontrol fonksiyonu
+function checkLevelUp() {
+  const previousLevel = level;
+  if (score >= 10 && score < 20) level = 2;
+  else if (score >= 20 && score < 30) level = 3;
+  else if (score >= 30 && score < 50) level = 4;
+  else if (score >= 50) level = 5;
+
+  if (level !== previousLevel) {
+    levelDisplay.textContent = `Level: ${level}`;
+    levelDisplay.classList.add('level-up');
+    setTimeout(() => levelDisplay.classList.remove('level-up'), 800);
+    changeBackgroundColor();
+  }
+}
+
+// 🌈 Arka plan rengini Level'a göre değiştir
+function changeBackgroundColor() {
+  const colors = ["#007bff", "#28a745", "#ff9800", "#e91e63", "#9c27b0"];
+  document.body.style.background = colors[level - 1] || "#007bff";
+}
+
+// 🎮 Kutuya tıklanınca Level kontrolü ekle
+box.addEventListener('click', () => {
+  score++;
+  scoreDisplay.textContent = score;
+  checkLevelUp();
+});

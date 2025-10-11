@@ -148,3 +148,23 @@ body {
   from { background-position: 0 0; }
   to { background-position: -10000px 5000px; }
 }
+
+/* ⚡ Level göstergesi */
+#levelDisplay {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ffcc00;
+  text-shadow: 0 0 10px #ffcc00;
+  margin-top: 10px;
+}
+
+/* 🎉 Level Up efekti */
+.level-up {
+  animation: flash 0.8s ease-in-out;
+}
+
+@keyframes flash {
+  0% { color: #ffcc00; transform: scale(1); }
+  50% { color: #ffffff; transform: scale(1.4); }
+  100% { color: #ffcc00; transform: scale(1); }
+}
