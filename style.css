@@ -128,3 +128,39 @@ body {
   height: 150px;
   margin-top: 10px;
 }
+
+/* 💖 Bağış kutularını neon yap */
+.donate-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #ff66aa; /* neon çerçeve */
+  box-shadow: 0 0 15px #ff66aa;
+  color: #fff; /* yazılar beyaz neon */
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.donate-box:hover {
+  box-shadow: 0 0 25px #ff66aa;
+  transform: scale(1.05);
+}
+
+/* 📱 QR kutularını neon yap */
+.qr-box {
+  display: inline-block;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #00ffff; /* neon mavi çerçeve */
+  box-shadow: 0 0 15px #00ffff;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.qr-box:hover {
+  box-shadow: 0 0 25px #00ffff;
+  transform: scale(1.05);
+}
