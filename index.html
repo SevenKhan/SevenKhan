@@ -3,49 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SevenKhan Oyunu</title>
+  <title>SevenKhan Piyasa</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- 🎮 Başlat Menüsü -->
-  <div id="start-menu">
-    <h1>🎮 SevenKhan Oyunu</h1>
-    <button id="start-btn">Oyunu Başlat</button>
-    <button id="music-toggle">🔊 Müziği Aç/Kapat</button>
-  </div>
-
-  <!-- 🕹️ Skor alanı -->
-  <div class="scoreboard">
-    <p>Skor: <span id="score">0</span></p>
-    <p>🏆 En Yüksek: <span id="highscore">0</span></p>
-  </div>
-
-  <!-- 🔁 Yeniden Başlat Butonu -->
-  <button id="restart-btn">Yeniden Başlat</button>
-
-  <!-- 🎯 Oyun Kutusu -->
-  <div id="game-box"></div>
+  <!-- 💹 Canlı Piyasa Bilgileri -->
+  <section id="market-section">
+    <h2>💹 Canlı Piyasa Bilgileri</h2>
+    <div id="market-data">
+      <p>💵 Dolar: <span id="usd">Yükleniyor...</span></p>
+      <p>🪙 Euro: <span id="eur">Yükleniyor...</span></p>
+      <p>🏆 Gram Altın: <span id="gold">Yükleniyor...</span></p>
+      <p>📈 BIST 100: <span id="bist">Yükleniyor...</span></p>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-<!-- 🌟 Arka plan yıldızları -->
-<div class="stars"></div>
-<div class="stars2"></div>
-<div class="stars3"></div>
-
-<!-- 🎯 Level göstergesi -->
-<p id="levelDisplay">Level: 1</p>
-
-<!-- 💰 Canlı Piyasa Bilgileri -->
-<section id="market-section">
-  <h2>💹 Canlı Piyasa Bilgileri</h2>
-  <div id="market-data">
-    <p>💵 Dolar: <span id="usd">Yükleniyor...</span></p>
-    <p>🪙 Euro: <span id="eur">Yükleniyor...</span></p>
-    <p>🏆 Gram Altın: <span id="gold">Yükleniyor...</span></p>
-    <p>📈 BIST 100: <span id="bist">Yükleniyor...</span></p>
-  </div>
-</section>
