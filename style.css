@@ -164,3 +164,31 @@ body {
   box-shadow: 0 0 25px #00ffff;
   transform: scale(1.05);
 }
+
+/* 💖 Neon kutular için sallanma animasyonu */
+@keyframes neonGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px #ff66aa, 0 0 25px #ff66aa, 0 0 35px #ff66aa;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff66aa, 0 0 30px #ff66aa, 0 0 40px #ff66aa;
+  }
+}
+
+@keyframes neonGlowBlue {
+  0%, 100% {
+    box-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff, 0 0 35px #00ffff;
+  }
+  50% {
+    box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
+  }
+}
+
+/* Animasyonu kutulara uygula */
+.donate-box {
+  animation: neonGlow 2s infinite alternate;
+}
+
+.qr-box {
+  animation: neonGlowBlue 2s infinite alternate;
+}
