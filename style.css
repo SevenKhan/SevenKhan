@@ -87,3 +87,8 @@ button:hover {
   0% { transform: translateY(0) scale(1); opacity: 1; }
   100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
 }
+
+/* Mouse hover ile kutu hareketi */
+main {
+  transition: transform 0.1s ease, box-shadow 0.3s ease;
+}
