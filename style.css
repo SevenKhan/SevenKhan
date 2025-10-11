@@ -1,10 +1,10 @@
 
-/* 💹 Piyasa bölümü */
+/* 🌌 Genel sayfa stili */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(120deg, #89f7fe, #66a6ff);
-  color: #fff;
+  background: #4B0082; /* koyu mor */
+  color: #000; /* yazılar siyah */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,20 +13,20 @@ body {
   padding-top: 50px;
 }
 
+/* 💹 Canlı Piyasa Bilgileri */
 #market-section {
   text-align: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.2);
   border-radius: 20px;
   padding: 20px;
   backdrop-filter: blur(6px);
-  color: #fff;
+  color: #000;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 #market-section h2 {
   font-size: 2em;
-  color: #ffcc00;
-  text-shadow: 0 0 10px #ffcc00;
+  color: #000;
 }
 
 #market-data p {
@@ -34,57 +34,60 @@ body {
   margin: 10px 0;
 }
 
+/* 📊 Grafik bölümü */
 #chart-section {
   margin-top: 30px;
+  text-align: center;
   width: 90%;
   max-width: 800px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.2);
   border-radius: 20px;
   padding: 20px;
   backdrop-filter: blur(6px);
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  color: #fff;
-  text-align: center;
+  color: #000;
 }
 
 #chart-section h2 {
   font-size: 1.8em;
-  color: #ffcc00;
   margin-bottom: 15px;
-  text-shadow: 0 0 10px #ffcc00;
 }
 
+#chart-section canvas {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+}
+
+/* 💖 Bağış bölümü */
 #donate-section {
   margin-top: 40px;
   text-align: center;
   width: 90%;
   max-width: 700px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.2);
   border-radius: 20px;
   padding: 20px;
   backdrop-filter: blur(6px);
-  color: #fff;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  color: #000;
 }
 
 #donate-section h2 {
   font-size: 1.8em;
-  color: #ff66aa;
   margin-bottom: 20px;
-  text-shadow: 0 0 10px #ff66aa;
 }
 
 .donate-box {
   margin: 10px 0;
   padding: 10px;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.3);
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .donate-box:hover {
-  background: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.45);
 }
 
 .donate-box p {
@@ -93,30 +96,29 @@ body {
   word-break: break-all;
 }
 
+/* 📱 QR Kod bölümü */
 #qr-section {
   margin-top: 30px;
   text-align: center;
   width: 90%;
   max-width: 700px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.2);
   border-radius: 20px;
   padding: 20px;
   backdrop-filter: blur(6px);
-  color: #fff;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  color: #000;
 }
 
 #qr-section h2 {
   font-size: 1.8em;
-  color: #ff66aa;
   margin-bottom: 20px;
-  text-shadow: 0 0 10px #ff66aa;
 }
 
 .qr-box {
   display: inline-block;
   margin: 15px;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.3);
   padding: 15px;
   border-radius: 15px;
 }
