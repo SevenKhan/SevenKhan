@@ -1,93 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SevenKhan — İlk Sayfam</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SevenKhan Oyunu</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <h1>Merhaba, SevenKhan!</h1>
-    <p id="clock">Saat: --:--:--</p>
-    <p>Bu, GitHub Pages ile yayınlanacak basit bir sayfa örneğidir.</p>
-    <button id="magic">Bana tıkla</button>
-    <p>Sayaç: <span id="counter">0</span></p>
-    <p id="message"></p>
-  </main>
+
+  <!-- 🎮 Başlat Menüsü -->
+  <div id="start-menu">
+    <h1>🎮 SevenKhan Oyunu</h1>
+    <button id="start-btn">Oyunu Başlat</button>
+    <button id="music-toggle">🔊 Müziği Aç/Kapat</button>
+  </div>
+
+  <!-- 🕹️ Skor alanı -->
+  <div class="scoreboard">
+    <p>Skor: <span id="score">0</span></p>
+    <p>🏆 En Yüksek: <span id="highscore">0</span></p>
+  </div>
+
+  <!-- 🔁 Yeniden Başlat Butonu -->
+  <button id="restart-btn">Yeniden Başlat</button>
+
+  <!-- 🎯 Oyun Kutusu -->
+  <div id="game-box"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
-
-<!-- Oyun kutusu -->
-<div id="game-box" style="
-  position:absolute;
-  width:50px;
-  height:50px;
-  background: linear-gradient(135deg,#ff7e5f,#feb47b);
-  border-radius:8px;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  cursor:pointer;
-"></div>
-
-<p>Puan: <span id="score">0</span></p>
-
-<!-- Yeniden Başlat Butonu -->
-<button id="restart-btn" style="
-  display:block;
-  margin:20px auto;
-  padding:10px 20px;
-  background:linear-gradient(135deg,#00c6ff,#0072ff);
-  color:white;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-  cursor:pointer;
-  transition:0.3s;
-">
-  🔁 Yeniden Başlat
-</button>
-
-<p>🏆 En Yüksek Skor: <span id="highscore">0</span></p>
-
-<!-- Başlat Menüsü -->
-<div id="start-menu" style="
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.8);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  color:white;
-  font-size:24px;
-  z-index:999;
-">
-  <h1>🎮 SevenKhan Oyunu</h1>
-  <button id="start-btn" style="
-    padding:15px 30px;
-    font-size:20px;
-    background:linear-gradient(135deg,#00c6ff,#0072ff);
-    color:white;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    transition:0.3s;
-  ">Oyunu Başlat</button>
-
-  <button id="music-toggle" style="
-    margin-top:15px;
-    padding:10px 20px;
-    font-size:16px;
-    background:linear-gradient(135deg,#ff7e5f,#feb47b);
-    color:white;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-  ">🔊 Müziği Aç/Kapat</button>
-</div>

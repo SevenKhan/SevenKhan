@@ -1,99 +1,64 @@
-/* Daha şık tasarım ve animasyonlar */
+/* 🌈 Genel stil */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100vh;
-  margin:0;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  animation: backgroundShift 15s ease infinite;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(120deg, #89f7fe, #66a6ff);
+  color: #333;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes backgroundShift {
-  0% { background: linear-gradient(135deg, #f5f7fa, #c3cfe2); }
-  50% { background: linear-gradient(135deg, #c3cfe2, #667eea); }
-  100% { background: linear-gradient(135deg, #f5f7fa, #c3cfe2); }
-}
-
-main {
-  text-align:center;
-  background:rgba(255,255,255,0.95);
-  padding:3rem 4rem;
-  border-radius:20px;
-  box-shadow:0 12px 40px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-main:hover {
-  transform: translateY(-10px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.25);
-}
-
-h1 {
-  font-size:2.5rem;
-  color:#333;
-  transition: color 0.3s;
-}
-h1:hover {
-  color:#667eea;
-}
-
-p {
-  font-size:1.2rem;
-  color:#555;
-  transition: color 0.3s;
-}
-
-button {
-  padding:0.8rem 1.5rem;
-  margin-top:1.5rem;
-  border-radius:12px;
-  border:none;
-  cursor:pointer;
-  font-weight:600;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color:white;
-  font-size:1rem;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-}
-button:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-  background: linear-gradient(135deg, #764ba2, #667eea);
-}
-
-#counter {
-  display:inline-block;
-  transition: transform 0.2s, color 0.3s;
-}
-
-#message {
-  font-weight:bold;
-  transition: color 0.3s;
-}
-
-/* Baloncuk animasyonu */
-.bubble {
+/* 🕹️ Oyun alanı */
+#game-box {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background: radial-gradient(circle, #ff5f6d, #ffc371);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: rise 1s forwards;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-@keyframes rise {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+/* 🔢 Skor alanı */
+.scoreboard {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
 }
 
-/* Mouse hover ile kutu hareketi */
-main {
-  transition: transform 0.1s ease, box-shadow 0.3s ease;
+/* 🏆 En yüksek skor */
+#highscore {
+  color: #ffeb3b;
 }
 
-/* Patlama efekti */
+/* 🔁 Yeniden başlat butonu */
+#restart-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border: none;
+  background: linear-gradient(135deg,#00c6ff,#0072ff);
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#restart-btn:hover {
+  transform: scale(1.1);
+}
+
+/* 💥 Patlama efekti */
 .explosion {
   position: absolute;
   width: 30px;
@@ -103,8 +68,47 @@ main {
   animation: explode 0.5s ease-out forwards;
   pointer-events: none;
 }
-
 @keyframes explode {
   0% { transform: scale(0.5); opacity: 1; }
   100% { transform: scale(3); opacity: 0; }
+}
+
+/* 🎮 Başlat menüsü */
+#start-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 999;
+  text-align: center;
+}
+#start-menu h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+#start-menu button {
+  margin: 10px;
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#start-btn {
+  background: linear-gradient(135deg,#00c6ff,#0072ff);
+}
+#music-toggle {
+  background: linear-gradient(135deg,#ff7e5f,#feb47b);
+}
+#start-menu button:hover {
+  transform: scale(1.05);
 }
