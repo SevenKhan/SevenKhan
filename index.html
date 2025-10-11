@@ -5,8 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SevenKhan Piyasa</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
+  <!-- 💖 Bağış Bölümü (EN ÜSTTE) -->
+  <section id="donate-section">
+    <h2>💖 Bağış Yapmak İster misiniz?</h2>
+    <div class="donate-box">
+      <p>🌞 <strong>Solana:</strong></p>
+      <p id="solana-address">5s1ZvjxCrrwd6JoF3wPEaSRpnNYMwSUqhYTF6YjMFKkz</p>
+    </div>
+    <div class="donate-box">
+      <p>🟣 <strong>Ethereum:</strong></p>
+      <p id="ethereum-address">0xb3669c541415a20E4Aa56ef13E76d02Fd9faa64E</p>
+    </div>
+  </section>
+
+  <!-- 📱 QR Kodları -->
+  <section id="qr-section">
+    <h2>📲 QR ile Bağış Yapın</h2>
+    <div class="qr-box">
+      <p>🌞 Solana</p>
+      <img id="solana-qr" src="" alt="Solana QR Kodu">
+    </div>
+    <div class="qr-box">
+      <p>🟣 Ethereum</p>
+      <img id="ethereum-qr" src="" alt="Ethereum QR Kodu">
+    </div>
+  </section>
 
   <!-- 💹 Canlı Piyasa Bilgileri -->
   <section id="market-section">
@@ -19,38 +46,12 @@
     </div>
   </section>
 
+  <!-- 📊 Fiyat Grafikleri -->
+  <section id="chart-section">
+    <h2>📈 Fiyat Grafikleri</h2>
+    <canvas id="priceChart" width="400" height="200"></canvas>
+  </section>
+
   <script src="script.js"></script>
 </body>
 </html>
-
-<!-- 📊 Canlı Fiyat Grafikleri -->
-<section id="chart-section">
-  <h2>📈 Fiyat Grafikleri</h2>
-  <canvas id="priceChart" width="400" height="200"></canvas>
-</section>
-
-<!-- 💖 Bağış Adresleri -->
-<section id="donate-section">
-  <h2>💖 Bağış Yapmak İster misiniz?</h2>
-  <div class="donate-box">
-    <p>🌞 <strong>Solana:</strong></p>
-    <p id="solana-address">5s1ZvjxCrrwd6JoF3wPEaSRpnNYMwSUqhYTF6YjMFKkz</p>
-  </div>
-  <div class="donate-box">
-    <p>🟣 <strong>Ethereum:</strong></p>
-    <p id="ethereum-address">0xb3669c541415a20E4Aa56ef13E76d02Fd9faa64E</p>
-  </div>
-</section>
-
-<!-- 📱 QR Kodları -->
-<section id="qr-section">
-  <h2>📲 QR ile Bağış Yapın</h2>
-  <div class="qr-box">
-    <p>🌞 Solana</p>
-    <img id="solana-qr" src="" alt="Solana QR Kodu">
-  </div>
-  <div class="qr-box">
-    <p>🟣 Ethereum</p>
-    <img id="ethereum-qr" src="" alt="Ethereum QR Kodu">
-  </div>
-</section>

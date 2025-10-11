@@ -192,3 +192,13 @@ body {
 .qr-box {
   animation: neonGlowBlue 2s infinite alternate;
 }
+
+/* Sayfa açılır açılmaz bağış kutuları hafif yukarıdan düşerek görünür */
+@keyframes slideDown {
+  0% { transform: translateY(-50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+#donate-section, #qr-section {
+  animation: slideDown 1s ease-out;
+}
