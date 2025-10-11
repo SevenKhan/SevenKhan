@@ -310,3 +310,93 @@ function geriSayimBaslat() {
 geriSayimBaslat();
 </script>
 <!-- Modern Geri Sayım Bitiş -->
+<!-- Cyberpunk Geri Sayım Başlangıç -->
+<style>
+@keyframes yanipSon {
+  0% { text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0, 0 0 40px #00fff0; color: #00fff0; }
+  50% { text-shadow: 0 0 5px #00ffb8, 0 0 15px #00ffb8, 0 0 30px #00ffb8; color: #00ffb8; }
+  100% { text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0, 0 0 40px #00fff0; color: #00fff0; }
+}
+#geriSayimKutular {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(10, 10, 20, 0.85);
+  color: #00fff0;
+  padding: 15px 25px;
+  border-radius: 14px;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 0 20px rgba(0,255,234,0.6);
+  z-index: 9999;
+  border: 1px solid #00fff0;
+  animation: yanipSon 2s infinite alternate;
+}
+.geri-sayim-kutu {
+  text-align: center;
+}
+.geri-sayim-sayi {
+  font-size: 26px;
+  font-weight: bold;
+}
+.geri-sayim-yazi {
+  font-size: 12px;
+  opacity: 0.8;
+}
+</style>
+
+<div id="geriSayimKutular">
+  <div class="geri-sayim-kutu">
+    <div id="gun" class="geri-sayim-sayi">0</div>
+    <div class="geri-sayim-yazi">Gün</div>
+  </div>
+  <div class="geri-sayim-kutu">
+    <div id="saat" class="geri-sayim-sayi">0</div>
+    <div class="geri-sayim-yazi">Saat</div>
+  </div>
+  <div class="geri-sayim-kutu">
+    <div id="dakika" class="geri-sayim-sayi">0</div>
+    <div class="geri-sayim-yazi">Dakika</div>
+  </div>
+  <div class="geri-sayim-kutu">
+    <div id="saniye" class="geri-sayim-sayi">0</div>
+    <div class="geri-sayim-yazi">Saniye</div>
+  </div>
+</div>
+
+<script>
+function geriSayimBaslat() {
+    const hedef = new Date("December 12, 2066 00:00:00").getTime();
+    const g = document.getElementById("gun");
+    const s = document.getElementById("saat");
+    const d = document.getElementById("dakika");
+    const sn = document.getElementById("saniye");
+    const kutu = document.getElementById("geriSayimKutular");
+
+    const interval = setInterval(() => {
+        const simdi = new Date().getTime();
+        const fark = hedef - simdi;
+
+        if (fark <= 0) {
+            clearInterval(interval);
+            kutu.innerHTML = "<b>Tarih Geldi!</b>";
+            kutu.style.color = "#ff006a";
+            kutu.style.textShadow = "0 0 20px #ff006a";
+            return;
+        }
+
+        const gun = Math.floor(fark / (1000 * 60 * 60 * 24));
+        const saat = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const dakika = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
+        const saniye = Math.floor((fark % (1000 * 60)) / 1000);
+
+        g.textContent = gun;
+        s.textContent = saat;
+        d.textContent = dakika;
+        sn.textContent = saniye;
+    }, 1000);
+}
+geriSayimBaslat();
+</script>
+<!-- Cyberpunk Geri Sayım Bitiş -->
