@@ -400,3 +400,154 @@ function geriSayimBaslat() {
 geriSayimBaslat();
 </script>
 <!-- Cyberpunk Geri Sayım Bitiş -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>SevenKhan Kripto Uzay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 🌌 Arka Plan: Yıldızlı Uzay Efekti */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      height: 100vh;
+      color: white;
+      font-family: 'Courier New', monospace;
+      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+      animation: uzayKay 60s linear infinite;
+      background-size: 400% 400%;
+    }
+    @keyframes uzayKay {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 🌠 Yıldız Noktaları */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      opacity: 0.3;
+      z-index: -1;
+      animation: yildizKay 200s linear infinite;
+    }
+    @keyframes yildizKay {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 5000px; }
+    }
+
+    /* ⚡ Cyberpunk Sayaç */
+    @keyframes yanipSon {
+      0% { text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0; color: #00fff0; }
+      50% { text-shadow: 0 0 5px #00ffb8, 0 0 15px #00ffb8; color: #00ffb8; }
+      100% { text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0; color: #00fff0; }
+    }
+    #geriSayimKutular {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(10, 10, 20, 0.85);
+      color: #00fff0;
+      padding: 15px 25px;
+      border-radius: 14px;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      gap: 15px;
+      box-shadow: 0 0 20px rgba(0,255,234,0.6);
+      z-index: 9999;
+      border: 1px solid #00fff0;
+      animation: yanipSon 2s infinite alternate;
+    }
+    .geri-sayim-kutu { text-align: center; }
+    .geri-sayim-sayi { font-size: 26px; font-weight: bold; }
+    .geri-sayim-yazi { font-size: 12px; opacity: 0.8; }
+
+    /* 📊 Kripto Haberler */
+    #kriptoHaberler {
+      max-width: 600px;
+      margin: 120px auto;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+    }
+    #kriptoHaberler a {
+      color: #00fff0;
+      text-decoration: none;
+    }
+    #kriptoHaberler a:hover {
+      text-shadow: 0 0 10px #00fff0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ⚡ Cyberpunk Geri Sayım -->
+<div id="geriSayimKutular">
+  <div class="geri-sayim-kutu"><div id="gun" class="geri-sayim-sayi">0</div><div class="geri-sayim-yazi">Gün</div></div>
+  <div class="geri-sayim-kutu"><div id="saat" class="geri-sayim-sayi">0</div><div class="geri-sayim-yazi">Saat</div></div>
+  <div class="geri-sayim-kutu"><div id="dakika" class="geri-sayim-sayi">0</div><div class="geri-sayim-yazi">Dakika</div></div>
+  <div class="geri-sayim-kutu"><div id="saniye" class="geri-sayim-sayi">0</div><div class="geri-sayim-yazi">Saniye</div></div>
+</div>
+
+<script>
+function geriSayimBaslat() {
+  const hedef = new Date("December 12, 2066 00:00:00").getTime();
+  const g = document.getElementById("gun");
+  const s = document.getElementById("saat");
+  const d = document.getElementById("dakika");
+  const sn = document.getElementById("saniye");
+  const kutu = document.getElementById("geriSayimKutular");
+
+  const interval = setInterval(() => {
+    const simdi = new Date().getTime();
+    const fark = hedef - simdi;
+    if (fark <= 0) {
+      clearInterval(interval);
+      kutu.innerHTML = "<b>Tarih Geldi!</b>";
+      kutu.style.color = "#ff006a";
+      kutu.style.textShadow = "0 0 20px #ff006a";
+      return;
+    }
+    const gun = Math.floor(fark / (1000 * 60 * 60 * 24));
+    const saat = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const dakika = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
+    const saniye = Math.floor((fark % (1000 * 60)) / 1000);
+    g.textContent = gun;
+    s.textContent = saat;
+    d.textContent = dakika;
+    sn.textContent = saniye;
+  }, 1000);
+}
+geriSayimBaslat();
+</script>
+
+<!-- 📊 Kripto Haberler -->
+<h2 style="text-align:center; color:#00fff0;">Güncel Kripto Haberleri</h2>
+<div id="kriptoHaberler">Haberler yükleniyor...</div>
+
+<script>
+fetch('https://api.coingecko.com/api/v3/status_updates')
+.then(res => res.json())
+.then(data => {
+    let html = "<ul>";
+    data.status_updates.slice(0,5).forEach(update => {
+        const title = update.description.length > 80 ? update.description.substring(0,77) + "..." : update.description;
+        const url = update.project && update.project.url ? update.project.url : "#";
+        html += `<li><a href="${url}" target="_blank">${title}</a></li>`;
+    });
+    html += "</ul>";
+    document.getElementById("kriptoHaberler").innerHTML = html;
+})
+.catch(err => {
+    document.getElementById("kriptoHaberler").innerHTML = "Haberler yüklenemedi.";
+    console.error(err);
+});
+</script>
+
+</body>
+</html>
