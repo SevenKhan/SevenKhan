@@ -132,3 +132,26 @@ EOF
 </script>
 </body>
 </html>
+<!-- Kripto Haberler Başlangıç -->
+<h2>Güncel Kripto Haberleri</h2>
+<div id="kriptoHaberler">Haberler yükleniyor...</div>
+
+<script>
+fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.coindesk.com/arc/outboundfeeds/rss/'))
+.then(response => response.json())
+.then(data => {
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(data.contents, "text/xml");
+    const items = xml.querySelectorAll("item");
+    let html = "<ul>";
+    items.forEach((item, index) => {
+        if(index < 5){ // sadece 5 haber
+            html += `<li><a href="${item.querySelector("link").textContent}" target="_blank">${item.querySelector("title").textContent}</a></li>`;
+        }
+    });
+    html += "</ul>";
+    document.getElementById("kriptoHaberler").innerHTML = html;
+});
+</script>
+<!-- Kripto Haberler Bitiş -->
+
