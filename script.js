@@ -187,3 +187,26 @@ musicToggle.addEventListener('click', () => {
     musicPlaying = true;
   }
 });
+
+// 🕹️ Oyunu başlatma düzeltmesi
+function startGame() {
+  score = 0;
+  scoreDisplay.textContent = score;
+  gameSpeed = 1000;
+  moveBox();
+
+  // Sürekli hareket başlat
+  clearInterval(window.moveInterval);
+  window.moveInterval = setInterval(moveBox, gameSpeed);
+}
+
+// 🎮 "Oyunu Başlat" butonuna bağlayalım
+startBtn.addEventListener('click', () => {
+  startMenu.style.display = 'none';
+  startGame();
+
+  if (!musicPlaying) {
+    bgMusic.play().catch(() => {});
+    musicPlaying = true;
+  }
+});
