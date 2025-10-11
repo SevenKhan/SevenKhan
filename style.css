@@ -1,3 +1,26 @@
+#share-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#share-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+#share-section a {
+  text-decoration: none;
+  color: #00ffff;
+  font-weight: bold;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+#share-section a:hover {
+  color: #ff66aa;
+  text-shadow: 0 0 10px #ff66aa;
+}
 
 /* 🌌 Genel sayfa stili */
 body {
