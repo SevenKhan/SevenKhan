@@ -144,3 +144,17 @@ restartBtn.addEventListener('click', () => {
   gameSpeed = 1000;
   moveBox();
 });
+
+// 🔊 Ses efektleri
+const clickSound = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_4c9f17469f.mp3');
+const victorySound = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_ebf7fa0b9b.mp3');
+
+gameBox.addEventListener('click', () => {
+  clickSound.currentTime = 0;
+  clickSound.play().catch(() => {}); // sessiz modda hata engeli
+
+  // Eğer skor rekoru geçerse zafer sesi
+  if (score > highscore) {
+    victorySound.play().catch(() => {});
+  }
+});
