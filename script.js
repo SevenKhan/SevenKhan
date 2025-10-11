@@ -63,3 +63,19 @@ document.addEventListener('mousemove', (e) => {
   const y = (e.clientY / window.innerHeight - 0.5) * 20;
   document.querySelector('main').style.transform = `translate(${x}px, ${y}px)`;
 });
+
+// Mini oyun: kutuyu yakala
+const gameBox = document.getElementById('game-box');
+const scoreDisplay = document.getElementById('score');
+let score = 0;
+
+gameBox.addEventListener('click', () => {
+  score++;
+  scoreDisplay.textContent = score;
+
+  // Kutuyu rastgele yeni pozisyona taşı
+  const x = Math.random() * (window.innerWidth - 60); // kutu genişliği 50px
+  const y = Math.random() * (window.innerHeight - 60);
+  gameBox.style.left = `${x}px`;
+  gameBox.style.top = `${y}px`;
+});
