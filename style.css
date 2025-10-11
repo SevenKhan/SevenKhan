@@ -92,3 +92,19 @@ button:hover {
 main {
   transition: transform 0.1s ease, box-shadow 0.3s ease;
 }
+
+/* Patlama efekti */
+.explosion {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, transparent);
+  animation: explode 0.5s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes explode {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}

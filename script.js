@@ -79,3 +79,38 @@ gameBox.addEventListener('click', () => {
   gameBox.style.left = `${x}px`;
   gameBox.style.top = `${y}px`;
 });
+
+// Gelişmiş oyun: renk, efekt ve zorluk
+let gameSpeed = 1000; // başlangıçta 1 saniyede bir hareket
+const colors = ['#ff7e5f','#feb47b','#6a11cb','#2575fc','#43cea2','#f64f59'];
+
+function moveBox() {
+  const x = Math.random() * (window.innerWidth - 60);
+  const y = Math.random() * (window.innerHeight - 60);
+  gameBox.style.left = `${x}px`;
+  gameBox.style.top = `${y}px`;
+  gameBox.style.background = `linear-gradient(135deg, ${colors[Math.floor(Math.random()*colors.length)]}, ${colors[Math.floor(Math.random()*colors.length)]})`;
+}
+
+gameBox.addEventListener('click', (e) => {
+  score++;
+  scoreDisplay.textContent = score;
+
+  // Patlama efekti
+  const explosion = document.createElement('div');
+  explosion.className = 'explosion';
+  explosion.style.left = `${e.clientX - 15}px`;
+  explosion.style.top = `${e.clientY - 15}px`;
+  document.body.appendChild(explosion);
+  setTimeout(() => explosion.remove(), 500);
+
+  // Zorluk: puan arttıkça hızlan
+  if (score % 5 === 0 && gameSpeed > 200) {
+    gameSpeed -= 100;
+  }
+
+  moveBox();
+});
+
+// Otomatik hareket (her saniye)
+setInterval(moveBox, gameSpeed);
