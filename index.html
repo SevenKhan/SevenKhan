@@ -10,7 +10,7 @@
 
   <!-- 💖 Bağış Bölümü (EN ÜSTTE) -->
   <section id="donate-section">
-    <h2>💖 Bağış Yapmak İster misiniz?</h2>
+    <h2>💖 Destek Olmak İstermisiniz?</h2>
     <div class="donate-box">
       <p>🌞 <strong>Solana:</strong></p>
       <p id="solana-address">5s1ZvjxCrrwd6JoF3wPEaSRpnNYMwSUqhYTF6YjMFKkz</p>
@@ -108,3 +108,27 @@ EOF
     }, 20000);
   });
 </script>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Sayfa</title>
+</head>
+<body>
+<h1>🌟 Toplam Ziyaretçi: <span id="visitor-count">0</span></h1>
+
+<!-- Müzik Başlat -->
+<audio id="background-music" autoplay>
+  <source src="muzik.mp3" type="audio/mpeg">
+  Tarayıcınız audio elementini desteklemiyor.
+</audio>
+
+<script>
+  // Örnek ziyaretçi sayısı
+  let visitorCount = localStorage.getItem('visitorCount') || 0;
+  visitorCount++;
+  localStorage.setItem('visitorCount', visitorCount);
+  document.getElementById('visitor-count').textContent = visitorCount;
+</script>
+</body>
+</html>
