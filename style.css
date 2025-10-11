@@ -1,24 +1,45 @@
-/* Basit stil */
+/* Daha şık tasarım */
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display:flex;
   align-items:center;
   justify-content:center;
   height:100vh;
   margin:0;
-  background:#f7f7f7;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
 }
 main {
   text-align:center;
-  background:white;
-  padding:2rem;
-  border-radius:12px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+  background:rgba(255,255,255,0.95);
+  padding:3rem 4rem;
+  border-radius:20px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+main:hover {
+  transform: translateY(-5px);
+}
+h1 {
+  font-size:2.5rem;
+  color:#333;
+}
+p {
+  font-size:1.2rem;
+  color:#555;
 }
 button {
-  padding:0.6rem 1rem;
-  border-radius:8px;
+  padding:0.8rem 1.5rem;
+  margin-top:1.5rem;
+  border-radius:12px;
   border:none;
   cursor:pointer;
   font-weight:600;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color:white;
+  font-size:1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
