@@ -154,4 +154,28 @@ fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.co
 });
 </script>
 <!-- Kripto Haberler Bitiş -->
+<!-- Kripto Haberler Başlangıç -->
+<h2>Güncel Kripto Haberleri</h2>
+<div id="kriptoHaberler">Haberler yükleniyor...</div>
+
+<script>
+fetch('https://api.coingecko.com/api/v3/status_updates')
+.then(res => res.json())
+.then(data => {
+    let html = "<ul>";
+    data.status_updates.slice(0,5).forEach(update => {
+        // Haber başlığı ve link
+        const title = update.description.length > 80 ? update.description.substring(0,77) + "..." : update.description;
+        const url = update.project && update.project.url ? update.project.url : "#";
+        html += `<li><a href="${url}" target="_blank">${title}</a></li>`;
+    });
+    html += "</ul>";
+    document.getElementById("kriptoHaberler").innerHTML = html;
+})
+.catch(err => {
+    document.getElementById("kriptoHaberler").innerHTML = "Haberler yüklenemedi.";
+    console.error(err);
+});
+</script>
+<!-- Kripto Haberler Bitiş -->
 
