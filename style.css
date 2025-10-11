@@ -33,3 +33,23 @@ body {
   font-size: 1.3em;
   margin: 10px 0;
 }
+
+#chart-section {
+  margin-top: 30px;
+  width: 90%;
+  max-width: 800px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  color: #fff;
+  text-align: center;
+}
+
+#chart-section h2 {
+  font-size: 1.8em;
+  color: #ffcc00;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px #ffcc00;
+}
