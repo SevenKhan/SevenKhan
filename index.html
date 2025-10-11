@@ -551,3 +551,36 @@ fetch('https://api.coingecko.com/api/v3/status_updates')
 
 </body>
 </html>
+<h2 style="text-align:center; color:#00fff0;">Canlı Kripto Fiyatları</h2>
+<div id="kriptoFiyatlar" style="
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.3);
+">
+  <div class="fiyat-kutu"><b>BTC:</b> <span id="btc">Yükleniyor...</span></div>
+  <div class="fiyat-kutu"><b>ETH:</b> <span id="eth">Yükleniyor...</span></div>
+  <div class="fiyat-kutu"><b>BNB:</b> <span id="bnb">Yükleniyor...</span></div>
+</div>
+
+<script>
+async function fiyatlariYukle() {
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd');
+    const data = await res.json();
+    document.getElementById("btc").textContent = data.bitcoin.usd.toLocaleString() + " $";
+    document.getElementById("eth").textContent = data.ethereum.usd.toLocaleString() + " $";
+    document.getElementById("bnb").textContent = data.binancecoin.usd.toLocaleString() + " $";
+  } catch (err) {
+    document.getElementById("kriptoFiyatlar").innerHTML = "Veri alınamadı 😔";
+  }
+}
+// Sayfa yüklenince ve her 1 dakikada bir güncelle
+fiyatlariYukle();
+setInterval(fiyatlariYukle, 60000);
+</script>
