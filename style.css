@@ -227,3 +227,10 @@ body {
 }
 
 /* QR kod stillerini kaldırdık, sadece bağış kutuları kaldı */
+
+#visitor-section {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.3em;
+  color: #fff; /* beyaz neon renk */
+}
