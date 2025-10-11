@@ -202,3 +202,5 @@ body {
 #donate-section, #qr-section {
   animation: slideDown 1s ease-out;
 }
+
+/* QR kod stillerini kaldırdık, sadece bağış kutuları kaldı */
