@@ -67,3 +67,14 @@ const priceChart = new Chart(ctx, {
         }
     }
 });
+
+// 💖 Bağış adreslerini tıklayınca kopyala
+document.getElementById('solana-address').addEventListener('click', () => {
+  navigator.clipboard.writeText('5s1ZvjxCrrwd6JoF3wPEaSRpnNYMwSUqhYTF6YjMFKkz');
+  alert('Solana adresi kopyalandı!');
+});
+
+document.getElementById('ethereum-address').addEventListener('click', () => {
+  navigator.clipboard.writeText('0xb3669c541415a20E4Aa56ef13E76d02Fd9faa64E');
+  alert('Ethereum adresi kopyalandı!');
+});

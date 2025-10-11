@@ -53,3 +53,42 @@ body {
   margin-bottom: 15px;
   text-shadow: 0 0 10px #ffcc00;
 }
+
+#donate-section {
+  margin-top: 40px;
+  text-align: center;
+  width: 90%;
+  max-width: 700px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+#donate-section h2 {
+  font-size: 1.8em;
+  color: #ff66aa;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff66aa;
+}
+
+.donate-box {
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.donate-box:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.donate-box p {
+  margin: 5px 0;
+  font-size: 1.2em;
+  word-break: break-all;
+}
