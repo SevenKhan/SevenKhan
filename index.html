@@ -726,3 +726,33 @@ function anim(elem, renk) {
 fiyatlariYukle();
 setInterval(fiyatlariYukle, 60000);
 </script>
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100vh;
+  color: white;
+  font-family: 'Courier New', monospace;
+  background: radial-gradient(ellipse at bottom, #4d0000 0%, #1a0000 100%);
+  animation: uzayKay 60s linear infinite;
+  background-size: 400% 400%;
+}
+#geriSayimKutular {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #FFD700; /* Sarı */
+  color: black;        /* İç yazılar siyah */
+  padding: 15px 25px;
+  border-radius: 14px;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.6);
+  z-index: 9999;
+  border: 1px solid #FFC700;
+  animation: yanipSon 2s infinite alternate;
+}
+
+.geri-sayim-sayi { font-size: 26px; font-weight: bold; }
+.geri-sayim-yazi { font-size: 12px; opacity: 0.8; }
