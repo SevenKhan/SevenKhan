@@ -643,3 +643,30 @@ function mesajlariGoster() {
 }
 mesajlariGoster();
 </script>
+<script>
+  let userCountry = "";
+
+  // Ziyaretçinin ülkesini otomatik tespit et
+  fetch("https://ipapi.co/json/")
+    .then(res => res.json())
+    .then(data => {
+      const countryCode = data.country_code;
+      const flag = {
+        TR: "🇹🇷", US: "🇺🇸", DE: "🇩🇪", FR: "🇫🇷",
+        GB: "🇬🇧", IT: "🇮🇹", ES: "🇪🇸", JP: "🇯🇵", RU: "🇷🇺"
+      }[countryCode] || "🌍";
+      userCountry = flag;
+
+      // Formda otomatik olarak seçili gösterelim
+      const select = document.getElementById("ulke");
+      if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.includes(flag)) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    })
+    .catch(err => console.log("Ülke tespiti başarısız:", err));
+</script>
