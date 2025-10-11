@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
   <!-- 💖 Bağış Bölümü (EN ÜSTTE) -->
   <section id="donate-section">
     <h2>💖 Destek Olmak İstermisiniz?</h2>
@@ -157,3 +158,88 @@ fetch('https://api.coingecko.com/api/v3/status_updates')
 </script>
 <!-- Kripto Haberler Bitiş -->
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>SevenKhan Kripto Sitesi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Geri Sayım Başlangıç -->
+<div id="geriSayim" style="
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    z-index: 9999;
+"></div>
+
+<script>
+function baslatGeriSayim() {
+    const hedefTarih = new Date("December 12, 2066 00:00:00").getTime();
+    const sayacDiv = document.getElementById("geriSayim");
+
+    const interval = setInterval(() => {
+        const simdi = new Date().getTime();
+        const fark = hedefTarih - simdi;
+
+        if (fark <= 0) {
+            clearInterval(interval);
+            sayacDiv.innerHTML = "Tarih geldi!";
+            return;
+        }
+
+        const gun = Math.floor(fark / (1000 * 60 * 60 * 24));
+        const saat = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const dakika = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
+        const saniye = Math.floor((fark % (1000 * 60)) / 1000);
+
+        sayacDiv.innerHTML = `${gun}g ${saat}s ${dakika}d ${saniye}s`;
+    }, 1000);
+}
+
+baslatGeriSayim();
+</script>
+<!-- Geri Sayım Bitiş -->
+
+<!-- Kripto Haberler Başlangıç -->
+<h2>Güncel Kripto Haberleri</h2>
+<div id="kriptoHaberler">Haberler yükleniyor...</div>
+
+<script>
+fetch('https://api.coingecko.com/api/v3/status_updates')
+.then(res => res.json())
+.then(data => {
+    let html = "<ul>";
+    data.status_updates.slice(0,5).forEach(update => {
+        const title = update.description.length > 80 ? update.description.substring(0,77) + "..." : update.description;
+        const url = update.project && update.project.url ? update.project.url : "#";
+        html += `<li><a href="${url}" target="_blank">${title}</a></li>`;
+    });
+    html += "</ul>";
+    document.getElementById("kriptoHaberler").innerHTML = html;
+})
+.catch(err => {
+    document.getElementById("kriptoHaberler").innerHTML = "Haberler yüklenemedi.";
+    console.error(err);
+});
+</script>
+<!-- Kripto Haberler Bitiş -->
+
+</body>
+</html>
