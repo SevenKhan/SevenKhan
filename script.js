@@ -114,3 +114,33 @@ gameBox.addEventListener('click', (e) => {
 
 // Otomatik hareket (her saniye)
 setInterval(moveBox, gameSpeed);
+
+// Skor kaydetme ve yeniden başlatma sistemi
+const highscoreDisplay = document.getElementById('highscore');
+const restartBtn = document.getElementById('restart-btn');
+
+// LocalStorage'dan yüksek skoru al
+let highscore = localStorage.getItem('highscore') || 0;
+highscoreDisplay.textContent = highscore;
+
+// Skor kontrolü
+function updateHighscore() {
+  if (score > highscore) {
+    highscore = score;
+    localStorage.setItem('highscore', highscore);
+    highscoreDisplay.textContent = highscore;
+  }
+}
+
+// Oyun sonunda veya tıklama sonrası skor kontrolü
+gameBox.addEventListener('click', () => {
+  updateHighscore();
+});
+
+// Yeniden başlat
+restartBtn.addEventListener('click', () => {
+  score = 0;
+  scoreDisplay.textContent = score;
+  gameSpeed = 1000;
+  moveBox();
+});
