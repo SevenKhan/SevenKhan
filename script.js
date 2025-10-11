@@ -158,3 +158,32 @@ gameBox.addEventListener('click', () => {
     victorySound.play().catch(() => {});
   }
 });
+
+// 🎵 Arka plan müziği ve menü
+const startMenu = document.getElementById('start-menu');
+const startBtn = document.getElementById('start-btn');
+const musicToggle = document.getElementById('music-toggle');
+
+const bgMusic = new Audio('https://cdn.pixabay.com/audio/2022/03/23/audio_3b8e71031e.mp3');
+bgMusic.loop = true; // sürekli çalsın
+
+let musicPlaying = false;
+
+startBtn.addEventListener('click', () => {
+  startMenu.style.display = 'none';
+  moveBox();
+  if (!musicPlaying) {
+    bgMusic.play().catch(() => {});
+    musicPlaying = true;
+  }
+});
+
+musicToggle.addEventListener('click', () => {
+  if (musicPlaying) {
+    bgMusic.pause();
+    musicPlaying = false;
+  } else {
+    bgMusic.play().catch(() => {});
+    musicPlaying = true;
+  }
+});
