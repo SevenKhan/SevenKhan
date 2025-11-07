@@ -1,0 +1,236 @@
+#share-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#share-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+#share-section a {
+  text-decoration: none;
+  color: #00ffff;
+  font-weight: bold;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+#share-section a:hover {
+  color: #ff66aa;
+  text-shadow: 0 0 10px #ff66aa;
+}
+
+/* 🌌 Genel sayfa stili */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #4B0082; /* koyu mor */
+  color: #000; /* yazılar siyah */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 50px;
+}
+
+/* 💹 Canlı Piyasa Bilgileri */
+#market-section {
+  text-align: center;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+#market-section h2 {
+  font-size: 2em;
+  color: #000;
+}
+
+#market-data p {
+  font-size: 1.3em;
+  margin: 10px 0;
+}
+
+/* 📊 Grafik bölümü */
+#chart-section {
+  margin-top: 30px;
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  color: #000;
+}
+
+#chart-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+#chart-section canvas {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+}
+
+/* 💖 Bağış bölümü */
+#donate-section {
+  margin-top: 40px;
+  text-align: center;
+  width: 90%;
+  max-width: 700px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  color: #000;
+}
+
+#donate-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.donate-box {
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.donate-box:hover {
+  background: rgba(255,255,255,0.45);
+}
+
+.donate-box p {
+  margin: 5px 0;
+  font-size: 1.2em;
+  word-break: break-all;
+}
+
+/* 📱 QR Kod bölümü */
+#qr-section {
+  margin-top: 30px;
+  text-align: center;
+  width: 90%;
+  max-width: 700px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  color: #000;
+}
+
+#qr-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.qr-box {
+  display: inline-block;
+  margin: 15px;
+  background: rgba(255,255,255,0.3);
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.qr-box img {
+  width: 150px;
+  height: 150px;
+  margin-top: 10px;
+}
+
+/* 💖 Bağış kutularını neon yap */
+.donate-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #ff66aa; /* neon çerçeve */
+  box-shadow: 0 0 15px #ff66aa;
+  color: #fff; /* yazılar beyaz neon */
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.donate-box:hover {
+  box-shadow: 0 0 25px #ff66aa;
+  transform: scale(1.05);
+}
+
+/* 📱 QR kutularını neon yap */
+.qr-box {
+  display: inline-block;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #00ffff; /* neon mavi çerçeve */
+  box-shadow: 0 0 15px #00ffff;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.qr-box:hover {
+  box-shadow: 0 0 25px #00ffff;
+  transform: scale(1.05);
+}
+
+/* 💖 Neon kutular için sallanma animasyonu */
+@keyframes neonGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px #ff66aa, 0 0 25px #ff66aa, 0 0 35px #ff66aa;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff66aa, 0 0 30px #ff66aa, 0 0 40px #ff66aa;
+  }
+}
+
+@keyframes neonGlowBlue {
+  0%, 100% {
+    box-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff, 0 0 35px #00ffff;
+  }
+  50% {
+    box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
+  }
+}
+
+/* Animasyonu kutulara uygula */
+.donate-box {
+  animation: neonGlow 2s infinite alternate;
+}
+
+.qr-box {
+  animation: neonGlowBlue 2s infinite alternate;
+}
+
+/* Sayfa açılır açılmaz bağış kutuları hafif yukarıdan düşerek görünür */
+@keyframes slideDown {
+  0% { transform: translateY(-50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+#donate-section, #qr-section {
+  animation: slideDown 1s ease-out;
+}
+
+/* QR kod stillerini kaldırdık, sadece bağış kutuları kaldı */
+
+#visitor-section {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.3em;
+  color: #fff; /* beyaz neon renk */
+}

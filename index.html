@@ -1,0 +1,758 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SevenKhan Piyasa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <!-- 💖 Bağış Bölümü (EN ÜSTTE) -->
+  <section id="donate-section">
+    <h2>💖 Destek Olmak İstermisiniz?</h2>
+    <div class="donate-box">
+      <p>🌞 <strong>Solana:</strong></p>
+      <p id="solana-address">5s1ZvjxCrrwd6JoF3wPEaSRpnNYMwSUqhYTF6YjMFKkz</p>
+    </div>
+    <div class="donate-box">
+      <p>🟣 <strong>Ethereum:</strong></p>
+      <p id="ethereum-address">0xb3669c541415a20E4Aa56ef13E76d02Fd9faa64E</p>
+    </div>
+  </section>
+
+  <!-- 💹 Canlı Piyasa Bilgileri -->
+  <section id="market-section">
+    <h2>💹 Canlı Piyasa Bilgileri</h2>
+    <div id="market-data">
+      <p>💵 Dolar: <span id="usd">Yükleniyor...</span></p>
+      <p>🪙 Euro: <span id="eur">Yükleniyor...</span></p>
+      <p>🏆 Gram Altın: <span id="gold">Yükleniyor...</span></p>
+      <p>📈 BIST 100: <span id="bist">Yükleniyor...</span></p>
+    </div>
+  </section>
+
+  <!-- 📊 Fiyat Grafikleri -->
+  <section id="chart-section">
+    <h2>📈 Fiyat Grafikleri</h2>
+    <canvas id="priceChart" width="400" height="200"></canvas>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- 🔗 Sosyal Paylaşım Butonları -->
+<section id="share-section">
+  <h2>📢 Sayfayı Paylaş</h2>
+  <a href="https://twitter.com/intent/tweet?text=SevenKhan%20Canlı%20Piyasa%20Sayfası:%20https://sevenkhan.github.io/SevenKhan/" target="_blank">🐦 Twitter</a> |
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://sevenkhan.github.io/SevenKhan/" target="_blank">📘 Facebook</a>
+</section>
+cat >> index.html <<'EOF'
+
+<!-- 🎵 Otomatik çalma engellenirse kullanıcı başlatabilir -->
+<button id="play-music-btn" style="
+    display:none;
+    padding:10px 20px;
+    margin:20px auto;
+    display:block;
+    background:#ff66aa;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:1.2em;
+    cursor:pointer;
+">▶ Müzik Başlat</button>
+
+<script>
+const music = document.getElementById('intro-music');
+const playBtn = document.getElementById('play-music-btn');
+
+window.addEventListener('load', () => {
+  music.play().catch(() => {
+    // Otomatik çalma engellendi, butonu göster
+    playBtn.style.display = 'block';
+  });
+
+  // 20 saniye sonra durdur
+  setTimeout(() => {
+    music.pause();
+    music.currentTime = 0;
+  }, 20000);
+});
+
+// Butona tıklanırsa çal
+playBtn.addEventListener('click', () => {
+  music.play();
+  playBtn.style.display = 'none';
+});
+</script>
+EOF
+
+<!-- 🌟 Ziyaretçi Sayacı -->
+<section id="visitor-section">
+  <p>🌟 Toplam Ziyaretçi: 
+    <img src="https://komarev.com/ghpvc/?username=SevenKhan&color=brightgreen" alt="Visitor Count">
+  </p>
+</section>
+
+<!-- 🎵 Sayfa açılır açılmaz müzik -->
+<audio id="intro-music" src="intro.mp3" preload="auto"></audio>
+<script>
+  const music = document.getElementById('intro-music');
+
+  window.addEventListener('load', () => {
+    music.play().catch(() => console.log("Otomatik çalma engellendi"));
+    setTimeout(() => {
+      music.pause();
+      music.currentTime = 0;
+    }, 20000);
+  });
+</script>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Sayfa</title>
+</head>
+<body>
+<h1>🌟 Toplam Ziyaretçi: <span id="visitor-count">0</span></h1>
+
+<!-- Müzik Başlat -->
+<audio id="background-music" autoplay>
+  <source src="muzik.mp3" type="audio/mpeg">
+  Tarayıcınız audio elementini desteklemiyor.
+</audio>
+
+<script>
+  // Örnek ziyaretçi sayısı
+  let visitorCount = localStorage.getItem('visitorCount') || 0;
+  visitorCount++;
+  localStorage.setItem('visitorCount', visitorCount);
+  document.getElementById('visitor-count').textContent = visitorCount;
+</script>
+</body>
+</html>
+<!-- Kripto Haberler Başlangıç -->
+<h2>Güncel Kripto Haberleri</h2>
+<div id="kriptoHaberler">Haberler yükleniyor...</div>
+
+<script>
+fetch('https://api.coingecko.com/api/v3/status_updates')
+.then(res => res.json())
+.then(data => {
+    let html = "<ul>";
+    data.status_updates.slice(0,5).forEach(update => {
+        // Haber başlığı ve link
+        const title = update.description.length > 80 ? update.description.substring(0,77) + "..." : update.description;
+        const url = update.project && update.project.url ? update.project.url : "#";
+        html += `<li><a href="${url}" target="_blank">${title}</a></li>`;
+    });
+    html += "</ul>";
+    document.getElementById("kriptoHaberler").innerHTML = html;
+})
+.catch(err => {
+    document.getElementById("kriptoHaberler").innerHTML = "Haberler yüklenemedi.";
+    console.error(err);
+});
+</script>
+<!-- Kripto Haberler Bitiş -->
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>SevenKhan Kripto Sitesi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Geri Sayım Başlangıç -->
+<div id="geriSayim" style="
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    z-index: 9999;
+"></div>
+
+<script>
+function baslatGeriSayim() {
+    const hedefTarih = new Date("December 12, 2066 00:00:00").getTime();
+    const sayacDiv = document.getElementById("geriSayim");
+
+    const interval = setInterval(() => {
+        const simdi = new Date().getTime();
+        const fark = hedefTarih - simdi;
+
+        if (fark <= 0) {
+            clearInterval(interval);
+            sayacDiv.innerHTML = "Tarih geldi!";
+            return;
+        }
+
+        const gun = Math.floor(fark / (1000 * 60 * 60 * 24));
+        const saat = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const dakika = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
+        const saniye = Math.floor((fark % (1000 * 60)) / 1000);
+
+        sayacDiv.innerHTML = `${gun}g ${saat}s ${dakika}d ${saniye}s`;
+    }, 1000);
+}
+
+baslatGeriSayim();
+</script>
+<!-- Geri Sayım Bitiş -->
+
+<!-- Kripto Haberler Başlangıç -->
+<h2>Güncel Kripto Haberleri</h2>
+<div id="kriptoHaberler">Haberler yükleniyor...</div>
+
+<script>
+fetch('https://api.coingecko.com/api/v3/status_updates')
+.then(res => res.json())
+.then(data => {
+    let html = "<ul>";
+    data.status_updates.slice(0,5).forEach(update => {
+        const title = update.description.length > 80 ? update.description.substring(0,77) + "..." : update.description;
+        const url = update.project && update.project.url ? update.project.url : "#";
+        html += `<li><a href="${url}" target="_blank">${title}</a></li>`;
+    });
+    html += "</ul>";
+    document.getElementById("kriptoHaberler").innerHTML = html;
+})
+.catch(err => {
+    document.getElementById("kriptoHaberler").innerHTML = "Haberler yüklenemedi.";
+    console.error(err);
+});
+</script>
+<!-- Kripto Haberler Bitiş -->
+
+</body>
+</html>
+<!-- Modern Geri Sayım Başlangıç -->
+<div id="geriSayimKutular" style="
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(15, 15, 15, 0.8);
+    color: #00ffea;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    gap: 10px;
+    box-shadow: 0 0 15px rgba(0,255,234,0.5);
+    z-index: 9999;
+">
+  <div style="text-align:center;">
+    <div id="gun" style="font-size:22px;">0</div>
+    <div style="font-size:12px;">Gün</div>
+  </div>
+  <div style="text-align:center;">
+    <div id="saat" style="font-size:22px;">0</div>
+    <div style="font-size:12px;">Saat</div>
+  </div>
+  <div style="text-align:center;">
+    <div id="dakika" style="font-size:22px;">0</div>
+    <div style="font-size:12px;">Dakika</div>
+  </div>
+  <div style="text-align:center;">
+    <div id="saniye" style="font-size:22px;">0</div>
+    <div style="font-size:12px;">Saniye</div>
+  </div>
+</div>
+
+<script>
+function geriSayimBaslat() {
+    const hedef = new Date("December 12, 2066 00:00:00").getTime();
+
+    const g = document.getElementById("gun");
+    const s = document.getElementById("saat");
+    const d = document.getElementById("dakika");
+    const sn = document.getElementById("saniye");
+
+    const interval = setInterval(() => {
+        const simdi = new Date().getTime();
+        const fark = hedef - simdi;
+
+        if (fark <= 0) {
+            clearInterval(interval);
+            document.getElementById("geriSayimKutular").innerHTML = "<b>Tarih Geldi!</b>";
+            return;
+        }
+
+        const gun = Math.floor(fark / (1000 * 60 * 60 * 24));
+        const saat = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const dakika = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
+        const saniye = Math.floor((fark % (1000 * 60)) / 1000);
+
+        g.textContent = gun;
+        s.textContent = saat;
+        d.textContent = dakika;
+        sn.textContent = saniye;
+    }, 1000);
+}
+geriSayimBaslat();
+</script>
+<!-- Modern Geri Sayım Bitiş -->
+<!-- Cyberpunk Geri Sayım Başlangıç -->
+<style>
+@keyframes yanipSon {
+  0% { text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0, 0 0 40px #00fff0; color: #00fff0; }
+  50% { text-shadow: 0 0 5px #00ffb8, 0 0 15px #00ffb8, 0 0 30px #00ffb8; color: #00ffb8; }
+  100% { text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0, 0 0 40px #00fff0; color: #00fff0; }
+}
+#geriSayimKutular {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(10, 10, 20, 0.85);
+  color: #00fff0;
+  padding: 15px 25px;
+  border-radius: 14px;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 0 20px rgba(0,255,234,0.6);
+  z-index: 9999;
+  border: 1px solid #00fff0;
+  animation: yanipSon 2s infinite alternate;
+}
+.geri-sayim-kutu {
+  text-align: center;
+}
+.geri-sayim-sayi {
+  font-size: 26px;
+  font-weight: bold;
+}
+.geri-sayim-yazi {
+  font-size: 12px;
+  opacity: 0.8;
+}
+</style>
+
+<div id="geriSayimKutular">
+  <div class="geri-sayim-kutu">
+    <div id="gun" class="geri-sayim-sayi">0</div>
+    <div class="geri-sayim-yazi">Gün</div>
+  </div>
+  <div class="geri-sayim-kutu">
+    <div id="saat" class="geri-sayim-sayi">0</div>
+    <div class="geri-sayim-yazi">Saat</div>
+  </div>
+  <div class="geri-sayim-kutu">
+    <div id="dakika" class="geri-sayim-sayi">0</div>
+    <div class="geri-sayim-yazi">Dakika</div>
+  </div>
+  <div class="geri-sayim-kutu">
+    <div id="saniye" class="geri-sayim-sayi">0</div>
+    <div class="geri-sayim-yazi">Saniye</div>
+  </div>
+</div>
+
+<script>
+function geriSayimBaslat() {
+    const hedef = new Date("December 12, 2066 00:00:00").getTime();
+    const g = document.getElementById("gun");
+    const s = document.getElementById("saat");
+    const d = document.getElementById("dakika");
+    const sn = document.getElementById("saniye");
+    const kutu = document.getElementById("geriSayimKutular");
+
+    const interval = setInterval(() => {
+        const simdi = new Date().getTime();
+        const fark = hedef - simdi;
+
+        if (fark <= 0) {
+            clearInterval(interval);
+            kutu.innerHTML = "<b>Tarih Geldi!</b>";
+            kutu.style.color = "#ff006a";
+            kutu.style.textShadow = "0 0 20px #ff006a";
+            return;
+        }
+
+        const gun = Math.floor(fark / (1000 * 60 * 60 * 24));
+        const saat = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const dakika = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
+        const saniye = Math.floor((fark % (1000 * 60)) / 1000);
+
+        g.textContent = gun;
+        s.textContent = saat;
+        d.textContent = dakika;
+        sn.textContent = saniye;
+    }, 1000);
+}
+geriSayimBaslat();
+</script>
+<!-- Cyberpunk Geri Sayım Bitiş -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>SevenKhan Kripto Uzay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 🌌 Arka Plan: Yıldızlı Uzay Efekti */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      height: 100vh;
+      color: white;
+      font-family: 'Courier New', monospace;
+      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+      animation: uzayKay 60s linear infinite;
+      background-size: 400% 400%;
+    }
+    @keyframes uzayKay {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 🌠 Yıldız Noktaları */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      opacity: 0.3;
+      z-index: -1;
+      animation: yildizKay 200s linear infinite;
+    }
+    @keyframes yildizKay {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 5000px; }
+    }
+
+    /* ⚡ Cyberpunk Sayaç */
+    @keyframes yanipSon {
+      0% { text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0; color: #00fff0; }
+      50% { text-shadow: 0 0 5px #00ffb8, 0 0 15px #00ffb8; color: #00ffb8; }
+      100% { text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0; color: #00fff0; }
+    }
+    #geriSayimKutular {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(10, 10, 20, 0.85);
+      color: #00fff0;
+      padding: 15px 25px;
+      border-radius: 14px;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      gap: 15px;
+      box-shadow: 0 0 20px rgba(0,255,234,0.6);
+      z-index: 9999;
+      border: 1px solid #00fff0;
+      animation: yanipSon 2s infinite alternate;
+    }
+    .geri-sayim-kutu { text-align: center; }
+    .geri-sayim-sayi { font-size: 26px; font-weight: bold; }
+    .geri-sayim-yazi { font-size: 12px; opacity: 0.8; }
+
+    /* 📊 Kripto Haberler */
+    #kriptoHaberler {
+      max-width: 600px;
+      margin: 120px auto;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+    }
+    #kriptoHaberler a {
+      color: #00fff0;
+      text-decoration: none;
+    }
+    #kriptoHaberler a:hover {
+      text-shadow: 0 0 10px #00fff0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ⚡ Cyberpunk Geri Sayım -->
+<div id="geriSayimKutular">
+  <div class="geri-sayim-kutu"><div id="gun" class="geri-sayim-sayi">0</div><div class="geri-sayim-yazi">Gün</div></div>
+  <div class="geri-sayim-kutu"><div id="saat" class="geri-sayim-sayi">0</div><div class="geri-sayim-yazi">Saat</div></div>
+  <div class="geri-sayim-kutu"><div id="dakika" class="geri-sayim-sayi">0</div><div class="geri-sayim-yazi">Dakika</div></div>
+  <div class="geri-sayim-kutu"><div id="saniye" class="geri-sayim-sayi">0</div><div class="geri-sayim-yazi">Saniye</div></div>
+</div>
+
+<script>
+function geriSayimBaslat() {
+  const hedef = new Date("December 12, 2066 00:00:00").getTime();
+  const g = document.getElementById("gun");
+  const s = document.getElementById("saat");
+  const d = document.getElementById("dakika");
+  const sn = document.getElementById("saniye");
+  const kutu = document.getElementById("geriSayimKutular");
+
+  const interval = setInterval(() => {
+    const simdi = new Date().getTime();
+    const fark = hedef - simdi;
+    if (fark <= 0) {
+      clearInterval(interval);
+      kutu.innerHTML = "<b>Tarih Geldi!</b>";
+      kutu.style.color = "#ff006a";
+      kutu.style.textShadow = "0 0 20px #ff006a";
+      return;
+    }
+    const gun = Math.floor(fark / (1000 * 60 * 60 * 24));
+    const saat = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const dakika = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
+    const saniye = Math.floor((fark % (1000 * 60)) / 1000);
+    g.textContent = gun;
+    s.textContent = saat;
+    d.textContent = dakika;
+    sn.textContent = saniye;
+  }, 1000);
+}
+geriSayimBaslat();
+</script>
+
+<!-- 📊 Kripto Haberler -->
+<h2 style="text-align:center; color:#00fff0;">Güncel Kripto Haberleri</h2>
+<div id="kriptoHaberler">Haberler yükleniyor...</div>
+
+<script>
+fetch('https://api.coingecko.com/api/v3/status_updates')
+.then(res => res.json())
+.then(data => {
+    let html = "<ul>";
+    data.status_updates.slice(0,5).forEach(update => {
+        const title = update.description.length > 80 ? update.description.substring(0,77) + "..." : update.description;
+        const url = update.project && update.project.url ? update.project.url : "#";
+        html += `<li><a href="${url}" target="_blank">${title}</a></li>`;
+    });
+    html += "</ul>";
+    document.getElementById("kriptoHaberler").innerHTML = html;
+})
+.catch(err => {
+    document.getElementById("kriptoHaberler").innerHTML = "Haberler yüklenemedi.";
+    console.error(err);
+});
+</script>
+
+</body>
+</html>
+<h2 style="text-align:center; color:#00fff0;">Canlı Kripto Fiyatları</h2>
+<div id="kriptoFiyatlar" style="
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.3);
+">
+  <div class="fiyat-kutu"><b>BTC:</b> <span id="btc">Yükleniyor...</span></div>
+  <div class="fiyat-kutu"><b>ETH:</b> <span id="eth">Yükleniyor...</span></div>
+  <div class="fiyat-kutu"><b>BNB:</b> <span id="bnb">Yükleniyor...</span></div>
+</div>
+
+<script>
+async function fiyatlariYukle() {
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd');
+    const data = await res.json();
+    document.getElementById("btc").textContent = data.bitcoin.usd.toLocaleString() + " $";
+    document.getElementById("eth").textContent = data.ethereum.usd.toLocaleString() + " $";
+    document.getElementById("bnb").textContent = data.binancecoin.usd.toLocaleString() + " $";
+  } catch (err) {
+    document.getElementById("kriptoFiyatlar").innerHTML = "Veri alınamadı 😔";
+  }
+}
+// Sayfa yüklenince ve her 1 dakikada bir güncelle
+fiyatlariYukle();
+setInterval(fiyatlariYukle, 60000);
+</script>
+<h2 style="text-align:center; color:#00fff0;">Ziyaretçi Mesajları</h2>
+<div id="mesajAlani" style="
+  max-width: 600px;
+  margin: 20px auto;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.3);
+  color: white;
+">
+  <input id="isim" placeholder="İsminiz" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: none;">
+  <textarea id="mesaj" placeholder="Mesajınızı yazın..." style="width: 100%; height: 80px; padding: 10px; border-radius: 8px; border: none;"></textarea>
+  <button onclick="mesajGonder()" style="
+    width: 100%;
+    padding: 10px;
+    background: #00fff0;
+    border: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+  ">Gönder</button>
+
+  <ul id="mesajlar" style="list-style:none; padding:0; margin-top:15px;"></ul>
+</div>
+
+<script>
+function mesajGonder() {
+  const isim = document.getElementById("isim").value.trim();
+  const mesaj = document.getElementById("mesaj").value.trim();
+  if (!isim || !mesaj) {
+    alert("Lütfen isim ve mesaj girin!");
+    return;
+  }
+  const zaman = new Date().toLocaleString();
+  const yeniMesaj = { isim, mesaj, zaman };
+
+  // Yerel depolama
+  const mevcut = JSON.parse(localStorage.getItem("mesajlar") || "[]");
+  mevcut.unshift(yeniMesaj);
+  localStorage.setItem("mesajlar", JSON.stringify(mevcut));
+
+  document.getElementById("isim").value = "";
+  document.getElementById("mesaj").value = "";
+  mesajlariGoster();
+}
+
+function mesajlariGoster() {
+  const mesajlar = JSON.parse(localStorage.getItem("mesajlar") || "[]");
+  const liste = document.getElementById("mesajlar");
+  liste.innerHTML = "";
+  mesajlar.forEach(m => {
+    const li = document.createElement("li");
+    li.innerHTML = `<b style="color:#00fff0;">${m.isim}</b>: ${m.mesaj} <br><small style="opacity:0.6;">${m.zaman}</small><hr style="border-color:#00fff0;">`;
+    liste.appendChild(li);
+  });
+}
+mesajlariGoster();
+</script>
+<script>
+  let userCountry = "";
+
+  // Ziyaretçinin ülkesini otomatik tespit et
+  fetch("https://ipapi.co/json/")
+    .then(res => res.json())
+    .then(data => {
+      const countryCode = data.country_code;
+      const flag = {
+        TR: "🇹🇷", US: "🇺🇸", DE: "🇩🇪", FR: "🇫🇷",
+        GB: "🇬🇧", IT: "🇮🇹", ES: "🇪🇸", JP: "🇯🇵", RU: "🇷🇺"
+      }[countryCode] || "🌍";
+      userCountry = flag;
+
+      // Formda otomatik olarak seçili gösterelim
+      const select = document.getElementById("ulke");
+      if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.includes(flag)) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    })
+    .catch(err => console.log("Ülke tespiti başarısız:", err));
+</script>
+<script>
+let oncekiFiyat = { btc: 0, eth: 0, bnb: 0 };
+
+async function fiyatlariYukle() {
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd');
+    const data = await res.json();
+
+    const fiyatlar = {
+      btc: data.bitcoin.usd,
+      eth: data.ethereum.usd,
+      bnb: data.binancecoin.usd
+    };
+
+    // BTC
+    const btcElem = document.getElementById("btc");
+    btcElem.textContent = fiyatlar.btc.toLocaleString() + " $";
+    if (fiyatlar.btc > oncekiFiyat.btc) anim(btcElem, "green");
+    else if (fiyatlar.btc < oncekiFiyat.btc) anim(btcElem, "red");
+
+    // ETH
+    const ethElem = document.getElementById("eth");
+    ethElem.textContent = fiyatlar.eth.toLocaleString() + " $";
+    if (fiyatlar.eth > oncekiFiyat.eth) anim(ethElem, "green");
+    else if (fiyatlar.eth < oncekiFiyat.eth) anim(ethElem, "red");
+
+    // BNB
+    const bnbElem = document.getElementById("bnb");
+    bnbElem.textContent = fiyatlar.bnb.toLocaleString() + " $";
+    if (fiyatlar.bnb > oncekiFiyat.bnb) anim(bnbElem, "green");
+    else if (fiyatlar.bnb < oncekiFiyat.bnb) anim(bnbElem, "red");
+
+    // Eski fiyatları güncelle
+    oncekiFiyat = {...fiyatlar};
+
+  } catch (err) {
+    document.getElementById("kriptoFiyatlar").innerHTML = "Veri alınamadı 😔";
+    console.error(err);
+  }
+}
+
+// Yanıp sönen animasyon
+function anim(elem, renk) {
+  elem.style.transition = "color 0.3s, text-shadow 0.3s";
+  elem.style.color = renk;
+  elem.style.textShadow = `0 0 8px ${renk}, 0 0 15px ${renk}`;
+  setTimeout(() => {
+    elem.style.color = "#00fff0";
+    elem.style.textShadow = "0 0 8px #00fff0, 0 0 15px #00fff0";
+  }, 800);
+}
+
+// Sayfa yüklenince ve her 1 dakikada bir güncelle
+fiyatlariYukle();
+setInterval(fiyatlariYukle, 60000);
+</script>
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100vh;
+  color: white;
+  font-family: 'Courier New', monospace;
+  background: radial-gradient(ellipse at bottom, #4d0000 0%, #1a0000 100%);
+  animation: uzayKay 60s linear infinite;
+  background-size: 400% 400%;
+}
+#geriSayimKutular {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #FFD700; /* Sarı */
+  color: black;        /* İç yazılar siyah */
+  padding: 15px 25px;
+  border-radius: 14px;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.6);
+  z-index: 9999;
+  border: 1px solid #FFC700;
+  animation: yanipSon 2s infinite alternate;
+}
+
+.geri-sayim-sayi { font-size: 26px; font-weight: bold; }
+.geri-sayim-yazi { font-size: 12px; opacity: 0.8; }
