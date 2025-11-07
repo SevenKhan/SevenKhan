@@ -20,6 +20,14 @@
 
 ---
 
+## 🏆 GitHub Badges
+![GitHub followers](https://img.shields.io/github/followers/SevenKhan?style=social)  
+![GitHub stars](https://img.shields.io/github/stars/SevenKhan?style=social)  
+![GitHub repo size](https://img.shields.io/github/repo-size/SevenKhan/SevenKhan)  
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=SevenKhan&layout=compact)  
+
+---
+
 ## 📊 GitHub Stats
 ![SevenKhan's GitHub stats](https://github-readme-stats.vercel.app/api?username=SevenKhan&show_icons=true&theme=radical)
 
