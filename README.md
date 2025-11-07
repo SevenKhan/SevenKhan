@@ -8,9 +8,9 @@
 
 ### 🌱 About Me
 - 💻 I work mainly with **WSL** and **Linux**
-- 🧠 Interested in **Blockchain** & **Automation**
-- ⚙️ Constantly learning and improving development workflows
-- 🎯 Goal: **Build clean and professional open-source projects**
+- 🧠 Passionate about **Blockchain**, **Automation**, and **Open Source**
+- ⚙️ Focused on clean, efficient development environments
+- 🎯 Goal: **Build professional and visually appealing GitHub projects**
 
 ---
 
@@ -25,15 +25,21 @@
 
 #### 🧹 [Terminal Cleaner](https://github.com/SevenKhan/terminal-cleaner)
 A terminal utility that helps you clean and optimize your environment.  
-![terminal-cleaner Demo](https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif)
+![terminal-cleaner Demo](https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif)
 
 #### 🎨 [PixelPulse](https://github.com/SevenKhan/pixelpulse)
-A pixel-monitoring and data visualization project.  
-![PixelPulse Demo](https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif)
+A pixel-monitoring and visualization project with creative effects.  
+![PixelPulse Demo](https://media.giphy.com/media/d31vTpVi1LAcDvdm/giphy.gif)
 
 #### 💰 [Crypto Site](https://github.com/SevenKhan/crypto-site)
-A cryptocurrency website that provides market data and latest news.  
-![crypto-site Demo](https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif)
+A cryptocurrency website that provides live market data and the latest updates.  
+![crypto-site Demo](https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif)
+
+---
+
+### 🎨 Theme Customization
+You can switch between **Dark** and **Light** modes in your GitHub settings.  
+This README supports both themes automatically 🌗
 
 ---
 
