@@ -1,8 +1,8 @@
-<!-- 💫 Dynamic GitHub Portfolio README for SevenKhan -->
+<!-- Profile README for SevenKhan -->
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&duration=3000&pause=1000&color=00FFFF&center=true&vCenter=true&width=600&lines=Hello%2C+I'm+SevenKhan+👋;Blockchain+and+Linux+Developer;Building+Awesome+Projects+🚀;Welcome+to+My+Profile!" alt="Typing SVG" />
-</p>
+<div align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1200&color=00FFFF&center=true&vCenter=true&width=450&lines=Hello,+I'm+SevenKhan!;Blockchain+Developer;WSL+%26+Linux+Enthusiast;Welcome+to+my+GitHub!" alt="Typing SVG" />
+</div>
 
 ---
 
