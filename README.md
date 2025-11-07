@@ -1,23 +1,30 @@
-# Merhaba, ben SevenKhan 👋
+# Hello, I'm SevenKhan 👋
 
-🌟 Blockchain, NFT ve kripto dünyasında aktifim  
-💻 WSL & Linux kullanarak geliştirme yapıyorum  
-🚀 Hedefim profesyonel ve etkileyici bir GitHub profili  
+🌱 I develop projects in Blockchain and WSL  
+🎯 My goal is to build a professional developer profile  
+💻 I work with WSL & Linux for development  
 
 ---
 
-## 🔧 Teknolojiler & Araçlar
+## 🔧 Technologies & Tools
 - **Blockchain & NFT:** Solidity, Smart Contracts  
-- **Programlama:** Python, JavaScript  
-- **Geliştirme:** WSL, Linux, Git  
+- **Programming:** Python, JavaScript  
+- **Development:** WSL, Linux, Git  
 
 ---
 
-## 📊 GitHub İstatistiklerim
-![SevenKhan'ın GitHub istatistikleri](https://github-readme-stats.vercel.app/api?username=SevenKhan&show_icons=true&theme=radical)
+## 🔥 Featured Projects
+[terminal-cleaner](https://github.com/SevenKhan/terminal-cleaner) – A terminal utility for cleaning and optimizing your system efficiently.  
+[PixelPulse](https://github.com/SevenKhan/pixelpulse) – A visual monitoring tool for pixel-based data streams.  
+[crypto-site](https://github.com/SevenKhan/crypto-site) – A cryptocurrency-focused website providing the latest news and updates.  
 
 ---
 
-## 📫 İletişim
+## 📊 GitHub Stats
+![SevenKhan's GitHub stats](https://github-readme-stats.vercel.app/api?username=SevenKhan&show_icons=true&theme=radical)
+
+---
+
+## 📫 Contact
 - 📧 Email: muammer345253@gmail.com  
 - 💬 Telegram: [MeKaNSIZ5253](https://t.me/MeKaNSIZ5253)  
